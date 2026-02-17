@@ -21,7 +21,7 @@
       overflow: hidden;
       background: var(--bg);
       font-family: var(--font);
-      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M3 2 L3 20 L8 15 L12 23 L15 21 L11 13 L18 13 Z' fill='%23ffffff' stroke='%23000000' stroke-width='1.2'/%3E%3C/svg%3E") 3 2, auto;
+      cursor: none;
     }
 
     main {
@@ -47,7 +47,24 @@
       border: 0;
       box-shadow: none;
       outline: none;
-      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M3 2 L3 20 L8 15 L12 23 L15 21 L11 13 L18 13 Z' fill='%23ffffff' stroke='%23000000' stroke-width='1.2'/%3E%3C/svg%3E") 3 2, pointer;
+      cursor: none;
+    }
+
+    .cursor-dot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ffffff;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+    }
+
+    .cursor-dot.is-link {
+      background: #adff00;
     }
   </style>
 </head>
@@ -55,5 +72,18 @@
   <main>
     <a href="mailto:bllnmrc@gmail.com">marco belloni architetto</a>
   </main>
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <script>
+    const dot = document.getElementById("cursorDot");
+    const link = document.querySelector("a");
+
+    window.addEventListener("mousemove", (event) => {
+      dot.style.left = `${event.clientX}px`;
+      dot.style.top = `${event.clientY}px`;
+    });
+
+    link.addEventListener("mouseenter", () => dot.classList.add("is-link"));
+    link.addEventListener("mouseleave", () => dot.classList.remove("is-link"));
+  </script>
 </body>
 </html>
