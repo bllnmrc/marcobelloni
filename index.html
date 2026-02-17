@@ -8,12 +8,10 @@
     :root {
       --bg: #f4f4f2;
       --ink: #ffffff;
-      --panel-bg: rgba(255, 255, 255, 0.14);
-      --panel-border: rgba(255, 255, 255, 0.45);
-      --panel-hover: rgba(255, 255, 255, 0.3);
+      --panel-border: rgba(255, 255, 255, 0.9);
       --overlay: rgba(0, 0, 0, 0.25);
-      --title-size: clamp(0.78rem, 1.15vw, 1rem);
-      --menu-size: clamp(0.72rem, 1.05vw, 0.9rem);
+      --title-size: clamp(1.05rem, 2.2vw, 1.9rem);
+      --menu-size: clamp(0.82rem, 1.25vw, 1.05rem);
     }
 
     * {
@@ -77,43 +75,44 @@
       z-index: 3;
       margin: 0;
       font-size: var(--title-size);
-      letter-spacing: 0.15em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-weight: 500;
-      text-decoration: none;
+      font-weight: 700;
+      font-stretch: condensed;
+      font-family: "Arial Narrow", "Roboto Condensed", "Helvetica Neue", Arial, sans-serif;
       color: var(--ink);
       text-shadow: 0 1px 10px rgba(0, 0, 0, 0.25);
     }
 
     .menu-cartiglio {
       position: fixed;
-      top: 1.2rem;
-      right: 1.2rem;
+      top: 4.3rem;
+      left: 1.3rem;
       z-index: 3;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      padding: 0.55rem 0.75rem;
+      width: min(34rem, calc(100vw - 2.6rem));
       border: 1px solid var(--panel-border);
-      border-radius: 999px;
-      background: var(--panel-bg);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      background: transparent;
     }
 
     .menu-cartiglio a {
+      display: block;
+      width: 100%;
+      text-align: center;
       text-decoration: none;
       color: var(--ink);
       font-size: var(--menu-size);
       text-transform: uppercase;
-      letter-spacing: 0.13em;
-      padding: 0.3rem 0.45rem;
-      border-radius: 999px;
-      transition: background 180ms ease;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      font-stretch: condensed;
+      font-family: "Arial Narrow", "Roboto Condensed", "Helvetica Neue", Arial, sans-serif;
+      padding: 0.32rem 0.45rem;
+      border-top: 1px solid var(--panel-border);
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
     }
 
-    .menu-cartiglio a:hover {
-      background: var(--panel-hover);
+    .menu-cartiglio a:first-child {
+      border-top: 0;
     }
 
     .lang-switch {
@@ -126,12 +125,10 @@
       font-size: var(--menu-size);
       text-transform: uppercase;
       letter-spacing: 0.13em;
-      border: 1px solid var(--panel-border);
-      border-radius: 999px;
-      padding: 0.45rem 0.7rem;
-      background: var(--panel-bg);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      font-weight: 700;
+      font-stretch: condensed;
+      font-family: "Arial Narrow", "Roboto Condensed", "Helvetica Neue", Arial, sans-serif;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
     }
 
     .content {
@@ -164,14 +161,9 @@
 
     @media (max-width: 720px) {
       .menu-cartiglio {
-        gap: 0.35rem;
-        right: 0.7rem;
-        top: 0.8rem;
-        padding: 0.45rem 0.5rem;
-      }
-
-      .menu-cartiglio a {
-        padding: 0.28rem 0.32rem;
+        left: 0.8rem;
+        top: 3.8rem;
+        width: calc(100vw - 1.6rem);
       }
 
       .top-left {
@@ -192,7 +184,7 @@
     <div class="overlay"></div>
   </div>
 
-  <a class="top-left" href="mailto:bllnmrc@gmail.com">MARCO BELLONI ARCHITETTO</a>
+  <h1 class="top-left">MARCO BELLONI ARCHITETTO</h1>
 
   <nav class="menu-cartiglio" aria-label="Menu principale">
     <a href="#project">PROJECT</a>
