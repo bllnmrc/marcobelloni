@@ -4,14 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marco Belloni</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
+      --font-main: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
       --bg: #f4f4f2;
       --ink: #ffffff;
       --panel-border: rgba(255, 255, 255, 0.9);
       --overlay: rgba(0, 0, 0, 0.25);
-      --title-size: clamp(1.05rem, 2.2vw, 1.9rem);
-      --menu-size: clamp(0.82rem, 1.25vw, 1.05rem);
+      --title-size: clamp(1.15rem, 2.45vw, 2.1rem);
+      --menu-size: clamp(0.76rem, 1.05vw, 0.92rem);
     }
 
     * {
@@ -22,7 +26,7 @@
       margin: 0;
       width: 100%;
       height: 100%;
-      font-family: "Helvetica Neue", "Neue Haas Grotesk Text Pro", Arial, sans-serif;
+      font-family: var(--font-main);
       background: var(--bg);
       color: var(--ink);
       overflow: hidden;
@@ -68,28 +72,56 @@
       pointer-events: none;
     }
 
-    .top-left {
+    .brand-link {
       position: fixed;
       top: 1.4rem;
       left: 1.3rem;
       z-index: 3;
       margin: 0;
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
       font-size: var(--title-size);
       letter-spacing: 0.08em;
       text-transform: uppercase;
       font-weight: 700;
-      font-stretch: condensed;
-      font-family: "Arial Narrow", "Roboto Condensed", "Helvetica Neue", Arial, sans-serif;
       color: var(--ink);
       text-shadow: 0 1px 10px rgba(0, 0, 0, 0.25);
     }
 
+    .brand-short,
+    .brand-full {
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .brand-short {
+      opacity: 1;
+      transition: opacity 260ms ease;
+    }
+
+    .brand-full {
+      max-width: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-width 420ms ease, opacity 300ms ease;
+    }
+
+    .brand-link:hover .brand-short {
+      opacity: 0;
+    }
+
+    .brand-link:hover .brand-full {
+      max-width: 28ch;
+      opacity: 1;
+    }
+
     .menu-cartiglio {
       position: fixed;
-      top: 4.3rem;
-      left: 1.3rem;
+      top: 1.2rem;
+      right: 1.2rem;
       z-index: 3;
-      width: min(34rem, calc(100vw - 2.6rem));
+      width: min(11.5rem, calc(100vw - 2.6rem));
       border: 1px solid var(--panel-border);
       background: transparent;
     }
@@ -104,9 +136,7 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       font-weight: 700;
-      font-stretch: condensed;
-      font-family: "Arial Narrow", "Roboto Condensed", "Helvetica Neue", Arial, sans-serif;
-      padding: 0.32rem 0.45rem;
+      padding: 0.26rem 0.35rem;
       border-top: 1px solid var(--panel-border);
       text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
     }
@@ -126,19 +156,17 @@
       text-transform: uppercase;
       letter-spacing: 0.13em;
       font-weight: 700;
-      font-stretch: condensed;
-      font-family: "Arial Narrow", "Roboto Condensed", "Helvetica Neue", Arial, sans-serif;
       text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
     }
 
     @media (max-width: 720px) {
       .menu-cartiglio {
-        left: 0.8rem;
-        top: 3.8rem;
-        width: calc(100vw - 1.6rem);
+        right: 0.8rem;
+        top: 0.8rem;
+        width: 9.7rem;
       }
 
-      .top-left {
+      .brand-link {
         left: 0.8rem;
         top: 1rem;
       }
@@ -156,7 +184,10 @@
     <div class="overlay"></div>
   </div>
 
-  <h1 class="top-left">MARCO BELLONI ARCHITETTO</h1>
+  <a class="brand-link" href="/" aria-label="Torna alla home">
+    <span class="brand-short">M B A</span>
+    <span class="brand-full">MARCO BELLONI ARCHITETTO</span>
+  </a>
 
   <nav class="menu-cartiglio" aria-label="Menu principale">
     <a href="#">PROJECT</a>
